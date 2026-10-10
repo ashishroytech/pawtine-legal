@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Report a Bug — Pawtine</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="index.html" class="brand"><span class="brand-mark">🐾</span>Pawtine</a>
+      <div class="nav-links">
+        <a href="support.html" class="active">Support</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </nav>
+
+    <div class="card">
+      <h1>Report a Bug</h1>
+      <p style="color: var(--ink-muted); margin-bottom: 24px;">
+        Describe what happened and what you expected instead. If you opened this from inside the app, your app
+        version and device details are attached automatically below.
+      </p>
+
+      <div id="form-success" class="form-status success">Thanks — your bug report is on its way.</div>
+      <div id="form-error" class="form-status error">Something went wrong sending that. Please try again.</div>
+
+      <form id="bug-form" action="https://formspree.io/f/xkjobrgg" method="POST">
+        <input type="hidden" name="_subject" value="Pawtine Bug Report" />
+        <input type="hidden" id="device-info" name="device_info" value="Not provided (opened directly in a browser)" />
+
+        <div class="field">
+          <label for="email">Your email (so we can follow up)</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="message">What happened?</label>
+          <textarea id="message" name="message" placeholder="What did you do, what happened, and what did you expect instead?" required></textarea>
+        </div>
+        <div class="field" id="device-field" style="display: none;">
+          <label>Attached device info</label>
+          <p id="device-display" style="color: var(--ink-muted); font-size: 13px; margin: 0;"></p>
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn">Send bug report</button>
+      </form>
+    </div>
+
+    <div class="footer-links">
+      <a href="support.html">Support</a> &nbsp;&middot;&nbsp; <a href="privacy-policy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+
+  <script>
+    // Pawtine opens this page with ?version=&build=&platform=&os=&device=
+    // so a report filed from inside the app still carries the same
+    // diagnostics the old mailto flow pre-filled — read them from the URL
+    // rather than asking the user to type them in.
+    const params = new URLSearchParams(window.location.search);
+    const version = params.get('version');
+    if (version) {
+      const parts = [
+        `App ${version}${params.get('build') ? ` (build ${params.get('build')})` : ''}`,
+        `${params.get('platform') || ''} ${params.get('os') || ''}`.trim(),
+        params.get('device'),
+      ].filter(Boolean);
+      const summary = parts.join(' · ');
+      document.getElementById('device-info').value = summary;
+      document.getElementById('device-display').textContent = summary;
+      document.getElementById('device-field').style.display = 'block';
+    }
+
+    const form = document.getElementById('bug-form');
+    const successBox = document.getElementById('form-success');
+    const errorBox = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      successBox.style.display = 'none';
+      errorBox.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (response.ok) {
+          successBox.style.display = 'block';
+          form.reset();
+        } else {
+          errorBox.style.display = 'block';
+        }
+      } catch (err) {
+        errorBox.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send bug report';
+      }
+    });
+  </script>
+</body>
+</html>
