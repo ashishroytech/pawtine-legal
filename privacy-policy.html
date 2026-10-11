@@ -19,10 +19,10 @@
 
     <div class="card">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: October 10, 2026</p>
+      <p class="updated">Last updated: October 11, 2026</p>
 
       <h2 style="margin-top: 0;">What this app stores</h2>
-      <p>Pawtine stores the information you enter about your pets: names, species, breed, weight history, daily routines, treatment and vaccination schedules, symptoms, digestive health logs, milestones, expenses, and any documents or photos you attach (e.g. vaccination certificates). By default, all of this lives only on your device, in local app storage. Nothing is sent anywhere unless you sign in to back up your data (below), which is entirely optional.</p>
+      <p>Pawtine stores the information you enter about your pets: names, species, breed, weight history, daily routines, treatment and vaccination schedules, symptoms, digestive health logs, milestones, expenses, breeder/litter records if you use Breeder Mode, and any documents or photos you attach (e.g. vaccination certificates). By default, all of this lives only on your device, in local app storage. Nothing is sent anywhere unless you sign in to back up your data (below), which is entirely optional.</p>
 
       <h2>Location (Lost Pet Mode)</h2>
       <p>If you use Lost Pet Mode's "Record current location" button, the app reads your device's current GPS location once, on your request, to describe where your pet was last seen. This location is held only on your device for the flyer you share. It is not stored permanently, not sent to our servers, and not included in cloud backup even if you're signed in.</p>
@@ -30,8 +30,14 @@
       <h2>Apple Health data</h2>
       <p>If you choose to import walks or runs from Apple Health, the app reads that workout data (distance, duration, date) from Health, with your explicit permission, to log it as pet activity. The app never writes anything back to Health, and never uses Health data for advertising or shares it with data brokers. This data is then stored the same way as anything else you log: locally, and in your cloud backup if you're signed in.</p>
 
+      <h2>Food scanner lookups</h2>
+      <p>Scanning a barcode sends only the barcode number (no personal information) to Open Food Facts/Open Pet Food Facts and, as a fallback, UPCitemdb, to look up the product. Scanning or photographing an ingredients label is processed entirely on your device (on-device text recognition) — that photo is never uploaded anywhere.</p>
+
       <h2>Subscriptions and purchases</h2>
       <p>Pawtine Plus is an auto-renewing subscription processed by Apple, using RevenueCat to manage and verify your purchase. We never see or store your payment details. RevenueCat receives information necessary to process and verify your purchase, such as your anonymous purchase/device identifiers and subscription status, not your name, email, or pet data. Billing, refunds, and subscription management are all handled through your Apple ID account settings.</p>
+
+      <h2>Crash and error reporting</h2>
+      <p>If the app crashes or hits an error, technical details (device model, OS version, what screen/action it happened on, and the error itself) are sent to our error-monitoring provider, Sentry, so we can fix it. This never includes your pet data, account email, or anything you typed into a form — only technical diagnostic information about the failure itself.</p>
 
       <h2>Cloud backup and sync (optional)</h2>
       <p>Signing in (including with Sign in with Apple) creates a private backup of your own pets' data in the cloud, on our sync provider (Supabase), so it survives a reinstall or a new phone. This is available on every plan and does not require sharing anything with anyone else. This includes each pet's full profile (including microchip, insurance, and secondary vet details), owner/emergency contact information used by Lost Pet Mode, routines, treatments, medication/vaccination schedules, completion logs, weight entries, symptom entries, digestive health logs, expenses (including any insurance claim status and reimbursement amounts you record), and any documents or photos you attach. Photos are compressed before upload. We do not sell or share this data with third parties.</p>
@@ -41,6 +47,15 @@
 
       <h2>Account information</h2>
       <p>If you create an account, we store your email address (if you provide one) and the display name you choose, so other caregivers in your household (if you share pets with anyone) can see who they're coordinating with. Sign in with Apple may share your name and a private relay email address, per your choice at sign-in. Passwords for email/password accounts are handled by our authentication provider and are never stored by us in plain text.</p>
+
+      <h2>Contacting us (Support / Report a Bug)</h2>
+      <p>If you use Contact Support or Report a Bug, the name, email, and message you submit (and, for bug reports, your app version and device details) are sent to our form provider, Formspree, which delivers them to us by email. This is only used to respond to you, never for marketing.</p>
+
+      <h2>Where your data is processed</h2>
+      <p>Our service providers (Supabase, RevenueCat, Sentry, Formspree, and Apple) may process data on servers located outside Australia. Each is bound by its own privacy and security practices as a data processor acting on our instructions, and none of them are permitted to use your data for their own purposes.</p>
+
+      <h2>How long we keep your data</h2>
+      <p>Local data stays on your device until you delete it or uninstall the app. Cloud-backed data is kept for as long as your account exists, and is removed when you delete your data or account (see below). Crash reports in Sentry and form submissions in Formspree follow those providers' own standard retention periods, typically 90 days, and are not linked back to your account.</p>
 
       <h2>Your rights over your data</h2>
       <p>Wherever you are, you can access, export, correct, or delete your data at any time directly in the app (Settings &gt; Back Up &amp; Restore). If data protection law in your region (such as the EU/UK GDPR or California's CCPA/CPRA) gives you additional rights, you can exercise them the same way, or by contacting us (below) — we do not sell personal data and do not need a separate "do not sell" process.</p>
@@ -52,7 +67,7 @@
       <p>Reminders (feeding times, treatment due dates, etc.) are scheduled locally on your device using your operating system's notification system. We do not operate a push notification server and do not see when or whether a reminder fires.</p>
 
       <h2>Analytics and advertising</h2>
-      <p>This app does not include third-party analytics or advertising SDKs. We do not track your activity for marketing purposes.</p>
+      <p>This app does not include any advertising or behavioral-analytics SDK, and does not track your activity for marketing purposes. Sentry (above) is error/crash monitoring only — it tells us when something broke, not what you did in the app.</p>
 
       <h2>Your data, your control</h2>
       <p>You can export a full copy of your stored data (including photos and documents) as a backup file, restore from one, or permanently delete all of it from this device and your account, at any time from Settings &gt; Back Up &amp; Restore. Deleting your data also removes your cloud copy if you're signed in, but does not remove copies your other caregivers have already received if you've shared pets with them.</p>
